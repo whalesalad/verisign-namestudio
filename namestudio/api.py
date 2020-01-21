@@ -8,24 +8,24 @@ from .utils import remove_empty
 logger = logging.getLogger(__name__)
 
 
-class VerisignAPI(object):
+class NameStudioAPI(object):
     BASE_URL = "https://sugapi.verisign-grs.com/ns-api/2.0"
 
     DEFAULT_TIMEOUT_SECONDS = 5
 
-    class VerisignAPIError(Exception):
+    class NameStudioAPIError(Exception):
         def __init__(self, *args, request=None, response=None, **kwargs):
             self.request = request
             self.response = response
             super().__init__(*args, **kwargs)
 
-    class HTTPTimeout(VerisignAPIError):
+    class HTTPTimeout(NameStudioAPIError):
         pass
 
-    class OverQueryLimit(VerisignAPIError):
+    class OverQueryLimit(NameStudioAPIError):
         pass
 
-    class UnknownError(VerisignAPIError):
+    class UnknownError(NameStudioAPIError):
         pass
 
     def __init__(self, api_key, api_timeout=None):
